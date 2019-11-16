@@ -2,9 +2,18 @@
   "name": "puppeteer-scraping",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
   "author": "tenmakamatani <tenma_18n1102540@nnn.ed.jp>",
   "license": "MIT",
   "dependencies": {
     "puppeteer": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "@types/puppeteer": "^1.20.2",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
   }
 }
