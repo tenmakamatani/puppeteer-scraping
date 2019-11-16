@@ -3,7 +3,7 @@ export interface Lecture {
   semester: Semester;
   year: number;
   teachers: string[];
-  dayAndPeriodTimes: DayAndPeriodTime[];
+  dayAndPeriodTimes: string;
   faculties?: string[];
   campus?: string;
   room?: string;
@@ -13,15 +13,9 @@ export interface Lecture {
 }
 
 export enum Semester {
-  Spring = '春学期',
-  Fall = '秋学期',
   YearRound = '通年',
-  SpringIntensive = '春学期集中',
-  FallIntensive = '秋学期集中',
-  One = '1学期',
-  Two = '2学期',
-  Three = '3学期',
-  Four = '4学期'
+  PreviousTerm = '前期',
+  LateTerm = '後期'
 }
 
 export interface DayAndPeriodTime {
