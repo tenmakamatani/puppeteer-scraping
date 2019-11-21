@@ -1,9 +1,14 @@
 import * as puppeteer from 'puppeteer';
 import { splitTeachers } from './utils';
 
+// Increase promise num
+require('events').EventEmitter.defaultMaxListeners = 100;
+
 import { Lecture } from './types';
 
-const main = async (url: string) => {
+const main = async (year: number) => {
+  // Return value
+  const lectures: Lecture[] = [];
   // Setup puppeteer
   const browser = await puppeteer.launch({
     ignoreHTTPSErrors: true,
@@ -15,7 +20,7 @@ const main = async (url: string) => {
   const page = await browser.newPage();
 
   // Get faculties
-  await page.goto(url, { waitUntil: 'load' }).catch(e => { console.log(e)});
+  await page.goto(`https://ocw.kyoto-u.ac.jp/syllabuses${year}`, { waitUntil: 'load' }).catch(e => { console.log(e)});
   let selector = '#listing > dd > a';
   const facultyLinks = await page.$$eval(selector, (items: any) => {
     return items.map((item) => {
@@ -67,16 +72,19 @@ const main = async (url: string) => {
         });
         lecture['title'] = lectureLink.textContent;
         lecture['semester'] = properties[5].content;
-        lecture['year'] = 2019;
+        lecture['year'] = year;
         lecture['teachers'] = splitTeachers(properties[17].content);
         lecture['dayAndPeriodTimes'] = properties[15].content;
         lecture['faculties'] = [facultyLink.textContent];
-        console.log(lecture);
+        lectures.push(lecture);
       };
+      console.log(lectures);
 
     };
 
   };
+
+  return lectures;
 }
 
-main('https://ocw.kyoto-u.ac.jp/syllabuses2019').catch(e => console.log(e));
+main(2019).catch(e => console.log(e));
