@@ -7,8 +7,10 @@ require('events').EventEmitter.defaultMaxListeners = 100;
 import { Lecture } from './types';
 
 const main = async (year: number) => {
+
   // Return value
   const lectures: Lecture[] = [];
+
   // Setup puppeteer
   const browser = await puppeteer.launch({
     ignoreHTTPSErrors: true,
