@@ -80,9 +80,11 @@ const main = async (year: number) => {
         lecture['teachers'] = splitTeachers(properties[17].content);
         lecture['dayAndPeriodTimes'] = properties[15].content;
         lecture['faculties'] = [facultyLink.textContent];
+
+        // Display on the console for clarity
+        console.log(lecture);
         lectures.push(lecture);
       };
-      console.log(lectures);
 
     };
 
