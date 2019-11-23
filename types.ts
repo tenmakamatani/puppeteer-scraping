@@ -12,18 +12,18 @@ export interface Lecture {
   }[];
 }
 
-export enum Semester {
+enum Semester {
   YearRound = '通年',
   PreviousTerm = '前期',
   LateTerm = '後期'
 }
 
-export interface DayAndPeriodTime {
+interface DayAndPeriodTime {
   day: Day;
   periodTime: PeriodTime;
 }
 
-export enum Day {
+enum Day {
   Sunday = '日',
   Monday = '月',
   Tuesday = '火',
@@ -33,4 +33,4 @@ export enum Day {
   Saturday = '土'
 }
 
-export type PeriodTime = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+type PeriodTime = 1 | 2 | 3 | 4 | 5 | 6 | 7;

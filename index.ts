@@ -72,6 +72,8 @@ const main = async (year: number) => {
             }
           });
         });
+
+        // No class was assigned to each
         lecture['title'] = lectureLink.textContent;
         lecture['semester'] = properties[5].content;
         lecture['year'] = year;
